@@ -1,0 +1,13 @@
+.job-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+i + i {
+	margin-left: 10px;
+}
+
+i:hover {
+	color: blue;
+	transform: scale(1.2);
+}
