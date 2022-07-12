@@ -18,7 +18,7 @@ function LoginForm(props) {
 
 	return (
 		<div className='login-box'>
-			<h3>Username:</h3>
+			<h3 className='form-header'>Sign In</h3>
 			<form onSubmit={handleSubmit}>
 				<input
 					id='username'
@@ -27,8 +27,8 @@ function LoginForm(props) {
 					onChange={handleUserChange}
 					required
 				/>
-				<button type='submit'>login</button>
-                <p>Click here to Sign up</p>
+
+
 			</form>
 		</div>
 	);
