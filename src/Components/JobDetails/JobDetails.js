@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 // Import the config object from Constants
 import { config } from '../../Constants';
 import axios from 'axios';
 import './jobDetails.css';
 
+
 function JobDetails(props) {
 	const [job, setJob] = useState('');
 	let [error, setError] = useState(null);
 	const { username, id } = useParams();
-	console.log(username, id);
+
 	// use config.API_URL to get the base URL and then add whatever endpoint to the base URL.
 	const url = `${config.API_URL}/user/${username}/jobs/${id}`;
+
+	const navigate = useNavigate();
 
 	// Make a request for a user with a given ID
 	useEffect(() => {
@@ -48,6 +51,7 @@ function JobDetails(props) {
 				<p>{job.description}</p>
 				<ul>Skills:{skillsList}</ul>
 				<ul>Job Contacts: {contactsList}</ul>
+				<button onClick={() => navigate(-1)}>Go Back Home</button>
 			</div>
 		);
 	}
