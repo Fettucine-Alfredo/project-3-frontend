@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { config } from '../../Constants';
 import axios from 'axios';
 import JobsListItem from '../JobsListItem/JobsListItem';
 import Spinner from 'react-bootstrap/Spinner';
-import Row from 'react-bootstrap/Spinner';
+import Row from 'react-bootstrap/Row';
 
 function Jobs({ username }) {
 	const [userDetails, setUserDetails] = useState(null);
@@ -10,11 +11,8 @@ function Jobs({ username }) {
 	const [error, setError] = useState(false);
 
 	function getUser() {
-		// Production URL
-		//const url = `https://sei-trakr.herokuapp.com/api/user/${username}`;
-
-		//Local testing URL
-		const url = `http://localhost:8000/api/user/${username}`;
+		// Get API URL from config
+		const url = `${config.API_URL}/user/${username}`;
 		axios
 			.get(url)
 			.then((res) => {
@@ -60,7 +58,7 @@ function Jobs({ username }) {
 
 	if (userDetails.jobs.length > 0) {
 		return (
-			<Row xs={1} md={3} className='g-4'>
+			<Row xs={1} md={2} lg={3} xl={4} className='g-4'>
 				{userDetails.jobs.map((job) => (
 					<JobsListItem key={job._id} job={job} />
 				))}
