@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { config } from '../../Constants';
+import './jobDetails.css';
 
 function JobDetails(props) {
 	const [formState, setFormState] = useState('');
@@ -53,9 +55,9 @@ function JobDetails(props) {
 	console.log(formState);
 
 	return (
-		<div id='jobDetails'>
+		<div className='jobDetails'>
 			<h1>{job.company.name}</h1>
-			<h2>{job.title}</h2>
+			<h3>{job.title}</h3>
 			<h3>{job.url}</h3>
 			<p>{job.description}</p>
 			<ul>Skills:{skillsList}</ul>
