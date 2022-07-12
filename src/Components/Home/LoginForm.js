@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function LoginForm(props) {
 	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
+	// const [email, setEmail] = useState('');
 	let navigate = useNavigate();
 
 	function handleSubmit(event) {
@@ -27,8 +27,7 @@ function LoginForm(props) {
 					onChange={handleUserChange}
 					required
 				/>
-
-
+				<button type='submit'>login</button>
 			</form>
 		</div>
 	);
