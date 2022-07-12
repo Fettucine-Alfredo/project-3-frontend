@@ -5,6 +5,15 @@ import Button from 'react-bootstrap/Button';
 import './JobsListItem.css';
 
 function JobsListItem({ job }) {
+	const techIcons = {
+		react: 'fa-brands fa-react',
+		javascript: 'fa-brands fa-js',
+		html: 'fa-brands fa-html5',
+		css: 'fa-brands fa-css3',
+		node: 'fa-brands fa-node',
+		python: 'fa-brands fa-python',
+	};
+
 	let navigate = useNavigate();
 
 	// Navigate the user to the job details page
@@ -31,21 +40,37 @@ function JobsListItem({ job }) {
 						<i
 							aria-hidden='true'
 							title={`Edit Job: ${job.title}`}
-							className='fa-solid fa-pencil'
+							className='fa-solid fa-pencil fa-xl'
 							onClick={() => {
 								handleEdit(job._id);
 							}}></i>
 						<i
 							aria-hidden='true'
 							title={`Delete Job: ${job.title}`}
-							className='fa-solid fa-trash-can fa-lg'
+							className='fa-solid fa-trash-can fa-xl'
 							onClick={() => {
 								handleDelete(job._id);
 							}}></i>
 					</div>
 				</Card.Header>
 				<Card.Body>
-					<Card.Title>{job.title}</Card.Title>
+					<Card.Title>
+						<a href={job.url}>
+							<i class='fa-solid fa-link'></i> {job.title}
+						</a>
+					</Card.Title>
+					<Card.Text>
+						{job.skills.map((skill) => {
+							skill = skill.toLowerCase();
+							if (techIcons.hasOwnProperty(skill)) {
+								return (
+									<i className={`${techIcons[skill]} fa-xl`} title={skill}></i>
+								);
+							} else {
+								return <div>{skill}</div>;
+							}
+						})}
+					</Card.Text>
 					<Button
 						variant='outline-primary'
 						onClick={() => handleDetails(job._id)}>
