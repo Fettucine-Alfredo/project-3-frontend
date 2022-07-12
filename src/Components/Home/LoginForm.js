@@ -17,9 +17,9 @@ function LoginForm(props) {
 	}
 
 	return (
-		<div>
+		<div className='login-box'>
+			<h3>Username:</h3>
 			<form onSubmit={handleSubmit}>
-				<h3>Username:</h3>
 				<input
 					id='username'
 					placeholder='Username'
