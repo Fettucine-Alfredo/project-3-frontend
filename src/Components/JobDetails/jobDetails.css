@@ -1,0 +1,31 @@
+.jobDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 24px auto;
+    background-color: rgba(69, 123, 157, 0.5);
+    border: solid;
+    border-radius: 20px;
+    max-width: 1100px;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+h3 {
+    margin-left: 10px;
+}
+
+p {
+    margin-left: 10px;
+}
+
+ul {
+    font-weight: bold;
+}
+
+li {
+    font-weight: normal;
+}
