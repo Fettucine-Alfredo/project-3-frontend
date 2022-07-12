@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import './JobsListItem.css';
 
 function JobsListItem({ job }) {
 	let navigate = useNavigate();
@@ -17,17 +18,38 @@ function JobsListItem({ job }) {
 		console.log('You clicked Delete button');
 	}
 
+	function handleEdit(id) {
+		console.log('You clicked the edit button');
+	}
+
 	return (
 		<Col>
 			<Card>
-				<Card.Header>{job.company.name}</Card.Header>
+				<Card.Header className='job-header'>
+					{job.company.name}
+					<div>
+						<i
+							aria-hidden='true'
+							title={`Edit Job: ${job.title}`}
+							className='fa-solid fa-pencil'
+							onClick={() => {
+								handleEdit(job._id);
+							}}></i>
+						<i
+							aria-hidden='true'
+							title={`Delete Job: ${job.title}`}
+							className='fa-solid fa-trash-can fa-lg'
+							onClick={() => {
+								handleDelete(job._id);
+							}}></i>
+					</div>
+				</Card.Header>
 				<Card.Body>
 					<Card.Title>{job.title}</Card.Title>
-					<Button variant='primary' onClick={() => handleDetails(job._id)}>
+					<Button
+						variant='outline-primary'
+						onClick={() => handleDetails(job._id)}>
 						See Details
-					</Button>
-					<Button variant='danger' onClick={() => handleDelete(job._id)}>
-						Delete Job
 					</Button>
 				</Card.Body>
 			</Card>
