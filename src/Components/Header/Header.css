@@ -1,8 +1,24 @@
 .color-nav {
-	background-color: rgba(159, 90, 253, 0);
+	background-color: rgba(159, 90, 253, 1);
 }
+
+.dropdown-menu {
+	background-color: rgba(159, 90, 253, 0);
+	border: 1px solid rgba(0, 0, 0, 1);
+}
+
 .trakr {
-	font-weight:900;
+	font-weight: 900;
 	font-size: xx-large;
-	font-family:'Courier New', Courier, monospace;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+	margin: 0;
+	max-width: 100%;
+}
+
+.navbar-light .navbar-toggler {
+	color: rgba(0, 0, 0, 0.55);
+	border-color: rgba(0, 0, 0, 1);
 }
