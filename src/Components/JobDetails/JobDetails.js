@@ -8,7 +8,7 @@ function JobDetails(props) {
 
 	const job = {
 		company: {
-			name: 'FaceBook',
+			name: 'Facebook',
 		},
 		title: 'Junior FrontEnd Developer',
 		url: 'https://facebook.com',
@@ -39,11 +39,27 @@ function JobDetails(props) {
 			.catch(setError);
 	}, []);
 
+	const skillsList = job.skills.map((skill) => {
+		return <li>{skill}</li>;
+	});
+	const contactsList = job.contacts.map((contact) => {
+		return (
+			<li>
+				{contact.name}, {contact.email}
+			</li>
+		);
+	});
+
 	console.log(formState);
 
 	return (
-		<div>
-			<h1>{job.title}</h1>
+		<div id='jobDetails'>
+			<h1>{job.company.name}</h1>
+			<h2>{job.title}</h2>
+			<h3>{job.url}</h3>
+			<p>{job.description}</p>
+			<ul>Skills:{skillsList}</ul>
+			<ul>Job Contacts: {contactsList}</ul>
 		</div>
 	);
 }
