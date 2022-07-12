@@ -1,3 +1,91 @@
-@media only screen and (max-width: 430px) {
-
+button,
+input {
+    border: none;
+    font-size: 1rem;
 }
+
+button {
+    background-color: rgb(27, 47, 77);
+    color: #ffffff;
+    padding: 0.75rem 1rem;
+    transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in;
+}
+
+button:focus {
+    box-shadow: 0 0 5px rgb(158, 213, 215);
+    outline: none;
+}
+
+button:hover {
+    background-color: rgb(158, 213, 215);
+}
+
+form {
+    background-color: white;
+    color: #222222;
+    padding: 1.5rem 2rem;
+    text-align: left;
+}
+
+input {
+    border-bottom: 1px solid #532727;
+    display: block;
+    margin: 1.5rem 0 0.5rem;
+    padding: 0.5rem 0;
+    transition: border 0.3s ease-in;
+}
+
+input:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+label {
+    color: #555555;
+    display: block;
+    opacity: 0;
+    transform: translateY(-2rem);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+input:focus+label,
+input:not(:placeholder-shown)+label {
+    opacity: 1;
+    transform: translateY(-4.25rem);
+}
+
+input[type='text'] {
+    width: 100%;
+}
+
+.login-box {
+    border: 1px solid #949494;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    margin: auto;
+    max-width: 400px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    margin-top: 160px;
+}
+
+.form-header {
+    padding: 10px;
+    color: rgb(26, 41, 68);
+}
+
+@media only screen and (max-width: 430px) {
+    form {
+        width: 75%;
+    }
+}
+
