@@ -3,6 +3,7 @@ import LoginForm from './LoginForm';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SignUpForm from './SignUpForm';
+import './Home.css';
 
 function Home(props) {
 	const [showSignUp, setShowSignUp] = useState(false);
