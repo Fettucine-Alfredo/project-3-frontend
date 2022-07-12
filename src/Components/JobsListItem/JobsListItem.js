@@ -56,18 +56,21 @@ function JobsListItem({ job }) {
 				<Card.Body>
 					<Card.Title>
 						<a href={job.url}>
-							<i class='fa-solid fa-link'></i> {job.title}
+							<i className='fa-solid fa-link'></i> {job.title}
 						</a>
 					</Card.Title>
 					<Card.Text>
-						{job.skills.map((skill) => {
+						{job.skills.map((skill, idx) => {
 							skill = skill.toLowerCase();
 							if (techIcons.hasOwnProperty(skill)) {
 								return (
-									<i className={`${techIcons[skill]} fa-xl`} title={skill}></i>
+									<i
+										key={`skill-${idx}`}
+										className={`${techIcons[skill]} fa-xl`}
+										title={skill}></i>
 								);
 							} else {
-								return <div>{skill}</div>;
+								return <span key={`skill-${idx}`}>{skill}</span>;
 							}
 						})}
 					</Card.Text>
