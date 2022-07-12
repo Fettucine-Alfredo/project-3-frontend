@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { config } from '../../Constants';
 import axios from 'axios';
 import JobsListItem from '../JobsListItem/JobsListItem';
 import Spinner from 'react-bootstrap/Spinner';
@@ -10,11 +11,8 @@ function Jobs({ username }) {
 	const [error, setError] = useState(false);
 
 	function getUser() {
-		// Production URL
-		//const url = `https://sei-trakr.herokuapp.com/api/user/${username}`;
-
-		//Local testing URL
-		const url = `http://localhost:8000/api/user/${username}`;
+		// Get API URL from config
+		const url = `${config.API_URL}/user/${username}`;
 		axios
 			.get(url)
 			.then((res) => {
