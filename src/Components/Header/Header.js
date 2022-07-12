@@ -9,7 +9,7 @@ import { NavDropdown } from 'react-bootstrap';
 function Header() {
 	return (
 		<Navbar className='color-nav' expand='lg'>
-			<Container>
+			<Container id='container'>
 				<LinkContainer to='/'>
 					<Navbar.Brand className='trakr'>Trakr.</Navbar.Brand>
 				</LinkContainer>
