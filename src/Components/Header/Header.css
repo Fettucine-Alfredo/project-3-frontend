@@ -1,0 +1,37 @@
+.color-nav {
+	background-color: rgba(168, 218, 220, 1);
+}
+
+.dropdown-menu {
+	background-color: rgba(29, 53, 87, 1);
+	border: 1px solid rgba(0, 0, 0, 1);
+}
+
+.trakr {
+	font-weight: 900;
+	font-size: xx-large;
+	font-family: 'Courier New', Courier, monospace;
+	color: rgba(29, 53, 87, 1);
+}
+.navbar-light .navbar-brand {
+	color: rgba(29, 53, 87, 1);
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: rgba(29, 53, 87, 1);
+	font-weight: 600;
+}
+
+.container {
+	margin: 0;
+	max-width: 100%;
+}
+
+.navbar-light .navbar-toggler {
+	color: rgba(0, 0, 0, 0.55);
+	border-color: rgba(0, 0, 0, 1);
+}
+
+.dropdown-item {
+	color: rgba(168, 218, 220, 1);
+}

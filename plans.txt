@@ -1,0 +1,10 @@
+App
+    - Home (/)
+        - Login
+        - Create username form
+    - User profile (user/:username)
+        - Job List
+            - Job Card
+        - Job Detail
+            - Job edit form
+    
