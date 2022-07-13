@@ -38,7 +38,9 @@ function Jobs({ username }) {
 	if (error || (!loading && !userDetails)) {
 		return (
 			<>
-				<Alert variant='danger'>{error}</Alert>
+				<Alert variant='danger'>
+					{error || 'Something went wrong. Please try again later'}
+				</Alert>
 			</>
 		);
 	}
