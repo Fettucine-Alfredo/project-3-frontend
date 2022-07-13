@@ -6,10 +6,6 @@ import axios from 'axios';
 import './jobDetails.css';
 
 function JobDetails(props) {
-	useEffect(() => {
-		document.title = 'Trakr - Job Details';
-	}, []);
-
 	const [job, setJob] = useState('');
 	let [error, setError] = useState(null);
 	const { username, id } = useParams();
@@ -27,6 +23,7 @@ function JobDetails(props) {
 				// handle success
 				console.log(response);
 				setJob(response.data);
+				document.title = `${job.title} at ${job.company.name}`;
 			})
 			.catch(function (error) {
 				// handle error
