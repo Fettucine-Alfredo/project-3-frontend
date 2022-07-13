@@ -5,8 +5,11 @@ import { config } from '../../Constants';
 import axios from 'axios';
 import './jobDetails.css';
 
-
 function JobDetails(props) {
+	useEffect(() => {
+		document.title = 'Trakr - Job Details';
+	}, []);
+
 	const [job, setJob] = useState('');
 	let [error, setError] = useState(null);
 	const { username, id } = useParams();
@@ -45,8 +48,9 @@ function JobDetails(props) {
 
 		return (
 			<div className='jobDetails'>
-				<h1>{job.company.name}</h1>
-				<h3>'{job.title}'</h3>
+				<h1>
+					{job.company.name}- '{job.title}'
+				</h1>
 				<h3>{job.url}</h3>
 				<p>{job.description}</p>
 				<ul>Skills:{skillsList}</ul>

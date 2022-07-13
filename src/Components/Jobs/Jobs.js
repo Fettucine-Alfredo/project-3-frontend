@@ -6,6 +6,9 @@ import Spinner from 'react-bootstrap/Spinner';
 import Row from 'react-bootstrap/Row';
 
 function Jobs({ username }) {
+	useEffect(() => {
+		document.title = 'Trakr - Jobs';
+	}, []);
 	const [userDetails, setUserDetails] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
