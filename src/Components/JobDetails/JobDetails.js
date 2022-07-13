@@ -52,7 +52,7 @@ function JobDetails(props) {
 				<p>{job.description}</p>
 				<ul>Skills:{skillsList}</ul>
 				<ul>Job Contacts: {contactsList}</ul>
-				<button onClick={() => navigate(-1)}>Go Back Home</button>
+				<button className='go-home-button' onClick={() => navigate(-1)}>Go Back Home</button>
 			</div>
 		);
 	}
