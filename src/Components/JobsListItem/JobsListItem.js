@@ -10,6 +10,9 @@ import './JobsListItem.css';
 
 function JobsListItem({ job, username, setUserDetails }) {
 	const [error, setError] = useState(false);
+
+	const lastUpdated = new Date(job.updatedAt);
+
 	const techIcons = {
 		react: 'fa-brands fa-react',
 		javascript: 'fa-brands fa-js',
@@ -91,6 +94,7 @@ function JobsListItem({ job, username, setUserDetails }) {
 							}
 						})}
 					</Card.Text>
+					<p>Updated: {lastUpdated.toLocaleDateString()}</p>
 					<Button
 						variant='outline-primary'
 						onClick={() => handleDetails(job._id)}>
