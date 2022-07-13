@@ -6,6 +6,10 @@ import SignUpForm from './SignUpForm';
 import './Home.css';
 
 function Home(props) {
+	useEffect(() => {
+		document.title = 'Trakr - Home';
+	}, []);
+
 	const [showSignUp, setShowSignUp] = useState(false);
 	if (showSignUp) {
 		return (
