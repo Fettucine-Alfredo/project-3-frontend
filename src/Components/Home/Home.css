@@ -1,91 +1,123 @@
 button,
 input {
-    border: none;
-    font-size: 1rem;
+	border: none;
+	font-size: 1rem;
 }
 
 button {
-    background-color: rgb(27, 47, 77);
-    color: #ffffff;
-    padding: 0.75rem 1rem;
-    transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in;
+	background-color: rgb(27, 47, 77);
+	color: #ffffff;
+	padding: 0.75rem 1rem;
+	transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in;
+}
+
+.go-home-button {
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 25px;
 }
 
 button:focus {
-    box-shadow: 0 0 5px rgb(158, 213, 215);
-    outline: none;
+	box-shadow: 0 0 5px rgb(158, 213, 215);
+	outline: none;
 }
 
 button:hover {
-    background-color: rgb(158, 213, 215);
+	background-color: rgb(158, 213, 215);
 }
 
 form {
-    background-color: white;
-    color: #222222;
-    padding: 1.5rem 2rem;
-    text-align: left;
+	background-color: white;
+	color: #222222;
+	padding: 1.5rem 2rem;
+	text-align: left;
+	border-radius: 24px;
 }
 
 input {
-    border-bottom: 1px solid #532727;
-    display: block;
-    margin: 1.5rem 0 0.5rem;
-    padding: 0.5rem 0;
-    transition: border 0.3s ease-in;
+	border-bottom: 1px solid #532727;
+	display: block;
+	margin: 1.5rem 0 0.5rem;
+	padding: 0.5rem 0;
+	transition: border 0.3s ease-in;
 }
 
 input:focus {
-    border-color: #000000;
-    outline: none;
+	border-color: #000000;
+	outline: none;
 }
 
 label {
-    color: #555555;
-    display: block;
-    opacity: 0;
-    transform: translateY(-2rem);
-    transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+	color: #555555;
+	display: block;
+	opacity: 0;
+	transform: translateY(-2rem);
+	transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 
-input:focus+label,
-input:not(:placeholder-shown)+label {
-    opacity: 1;
-    transform: translateY(-4.25rem);
+input:focus + label,
+input:not(:placeholder-shown) + label {
+	opacity: 1;
+	transform: translateY(-4.25rem);
 }
 
 input[type='text'] {
-    width: 100%;
+	width: 100%;
 }
 
 .login-box {
-    border: 1px solid #949494;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
-    width: 100%;
-    margin: auto;
-    max-width: 400px;
-    text-align: center;
-    background-color: #ffffff;
+	border: 1px solid #949494;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+	width: 90%;
+	margin: auto;
+	max-width: 400px;
+	text-align: center;
+	background-color: #ffffff;
+	margin-top: 24px;
+	border-radius: 24px;
 }
 
 .submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-box {
-    margin-top: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .form-header {
-    padding: 10px;
-    color: rgb(26, 41, 68);
+	padding-top: 15px;
+	color: rgb(26, 41, 68);
+}
+
+.login-form-buttons {
+	margin-right: 10px;
+	margin-top: 5px;
+}
+
+.background {
+	max-width: 100%;
+	margin-top: 45px;
 }
 
 @media only screen and (max-width: 430px) {
-    form {
-        width: 75%;
-    }
+	form {
+		width: 75%;
+	}
 }
 
+@media only screen and (min-width: 1000px) {
+	.background {
+		display: none;
+	}
+	.home-page {
+		background-image: url('../../Assets/background.png');
+		background-size: 100%;
+		background-repeat: no-repeat;
+		height: 90vh;
+	}
+}
+
+@media only screen and (min-width: 750px) {
+	.background {
+		position: absolute;
+		bottom: 0%;
+	}
+}
