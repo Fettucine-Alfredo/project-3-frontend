@@ -4,6 +4,7 @@ import axios from 'axios';
 import JobsListItem from '../JobsListItem/JobsListItem';
 import Spinner from 'react-bootstrap/Spinner';
 import Row from 'react-bootstrap/Row';
+import Alert from 'react-bootstrap/Alert';
 
 function Jobs({ username }) {
 	useEffect(() => {
@@ -22,13 +23,11 @@ function Jobs({ username }) {
 				if (res.status === 200) {
 					setUserDetails(res.data);
 					setLoading(false);
-				} else if (res.status === 404) {
-					setError({ message: "Sorry, Couldn't find user" });
 				}
 			})
 			.catch((error) => {
 				setLoading(false);
-				setError(error);
+				setError(error.response.data);
 			});
 	}
 
@@ -39,7 +38,7 @@ function Jobs({ username }) {
 	if (error || (!loading && !userDetails)) {
 		return (
 			<>
-				<h2>Oops, something went wrong. Please try again later</h2>
+				<Alert variant='danger'>{error}</Alert>
 			</>
 		);
 	}
@@ -53,14 +52,19 @@ function Jobs({ username }) {
 	}
 
 	if (!loading && !userDetails.jobs.length) {
-		return <h2>You don't currently have any jobs</h2>;
+		return <Alert variant='primary'>You have't added any jobs yet...</Alert>;
 	}
 
 	if (!loading && userDetails.jobs.length > 0) {
 		return (
 			<Row xs={1} md={2} lg={3} xl={4} className='g-4'>
 				{userDetails.jobs.map((job) => (
-					<JobsListItem key={job._id} job={job} />
+					<JobsListItem
+						key={job._id}
+						job={job}
+						username={username}
+						setUserDetails={setUserDetails}
+					/>
 				))}
 			</Row>
 		);
