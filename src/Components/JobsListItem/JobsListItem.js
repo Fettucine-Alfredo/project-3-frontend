@@ -1,10 +1,18 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { config } from '../../Constants';
+import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import './JobsListItem.css';
 
-function JobsListItem({ job }) {
+function JobsListItem({ job, username, setUserDetails }) {
+	const [error, setError] = useState(false);
+
+	const lastUpdated = new Date(job.updatedAt);
+
 	const techIcons = {
 		react: 'fa-brands fa-react',
 		javascript: 'fa-brands fa-js',
@@ -24,7 +32,19 @@ function JobsListItem({ job }) {
 
 	// Delete job from database and update state
 	function handleDelete(id) {
-		console.log('You clicked Delete button');
+		const url = `${config.API_URL}/user/${username}/jobs/${id}`;
+		axios
+			.delete(url)
+			.then((response) => {
+				if (response.status === 200) {
+					setUserDetails(response.data);
+				} else {
+					setError(true);
+				}
+			})
+			.catch((error) => {
+				setError(error.response.data);
+			});
 	}
 
 	function handleEdit(id) {
@@ -54,28 +74,37 @@ function JobsListItem({ job }) {
 					</div>
 				</Card.Header>
 				<Card.Body>
-					<Card.Title>
+					<Card.Title className='mb-4'>
 						<a href={job.url}>
-							<i class='fa-solid fa-link'></i> {job.title}
+							<i className='fa-solid fa-link'></i> {job.title}
 						</a>
 					</Card.Title>
 					<Card.Text>
-						{job.skills.map((skill) => {
+						{job.skills.map((skill, idx) => {
 							skill = skill.toLowerCase();
 							if (techIcons.hasOwnProperty(skill)) {
 								return (
-									<i className={`${techIcons[skill]} fa-xl`} title={skill}></i>
+									<i
+										key={`skill-${idx}`}
+										className={`${techIcons[skill]} fa-xl`}
+										title={skill}></i>
 								);
 							} else {
-								return <div>{skill}</div>;
+								return <span key={`skill-${idx}`}>{skill}</span>;
 							}
 						})}
 					</Card.Text>
+					<p>Updated: {lastUpdated.toLocaleDateString()}</p>
 					<Button
 						variant='outline-primary'
 						onClick={() => handleDetails(job._id)}>
 						See Details
 					</Button>
+					{error && (
+						<Alert variant='danger' className='mt-3'>
+							Something went wrong. Try again later.
+						</Alert>
+					)}
 				</Card.Body>
 			</Card>
 		</Col>

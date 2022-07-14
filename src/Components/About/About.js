@@ -1,8 +1,13 @@
 import React from 'react';
+import { useEffect } from 'react';
 import './About.css';
 import Mern from '../../Assets/Mern.png';
 
 function About(props) {
+	useEffect(() => {
+		document.title = 'Home Page';
+	}, []);
+
 	return (
 		<div className='about-container'>
 			<div className='about'>

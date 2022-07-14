@@ -1,27 +1,18 @@
 import React from 'react';
 import LoginForm from './LoginForm';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import SignUpForm from './SignUpForm';
+import './Home.css';
+import background from '../../Assets/background.png';
+import { useEffect } from 'react';
 
 function Home(props) {
-	const [showSignUp, setShowSignUp] = useState(false);
-	if (showSignUp) {
-		return (
-			<div>
-				<SignUpForm />
-			</div>
-		);
-	}
+	useEffect(() => {
+		document.title = 'Trakr - Home';
+	}, []);
+
 	return (
-		<div>
+		<div className='home-page'>
 			<LoginForm />
-			<button
-				onClick={() => {
-					setShowSignUp(true);
-				}}>
-				Sign up
-			</button>
+			<img className='background' src={background} alt={'background image'} />
 		</div>
 	);
 }
