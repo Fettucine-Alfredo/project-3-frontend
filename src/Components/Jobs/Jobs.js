@@ -1,41 +1,13 @@
-import { useState, useEffect } from 'react';
-import { config } from '../../Constants';
-import axios from 'axios';
+
 import JobsListItem from '../JobsListItem/JobsListItem';
 import Spinner from 'react-bootstrap/Spinner';
 import Row from 'react-bootstrap/Row';
 import Alert from 'react-bootstrap/Alert';
 
-function Jobs({ username }) {
-	useEffect(() => {
-		document.title = 'Trakr - Jobs';
-	}, []);
-	const [userDetails, setUserDetails] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(false);
 
-	function getUser() {
-		// Get API URL from config
-		const url = `${config.API_URL}/user/${username}`;
-		axios
-			.get(url)
-			.then((res) => {
-				if (res.status === 200) {
-					setUserDetails(res.data);
-					setLoading(false);
-				}
-			})
-			.catch((error) => {
-				setLoading(false);
-				setError(error.response.data);
-			});
-	}
+function Jobs({ userDetails, setUserDetails, loading, error }) {
+	if (error || (!userDetails && !loading)) {
 
-	useEffect(() => {
-		getUser();
-	}, []);
-
-	if (error || (!loading && !userDetails)) {
 		return (
 			<>
 				<Alert variant='danger'>
@@ -64,7 +36,7 @@ function Jobs({ username }) {
 					<JobsListItem
 						key={job._id}
 						job={job}
-						username={username}
+						username={userDetails.username}
 						setUserDetails={setUserDetails}
 					/>
 				))}
