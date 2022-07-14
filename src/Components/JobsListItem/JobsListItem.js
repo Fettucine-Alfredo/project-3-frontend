@@ -94,6 +94,7 @@ function JobsListItem({ job, username, setUserDetails }) {
 							}
 						})}
 					</Card.Text>
+					<p>Current Step: {job.currentStep}</p>
 					<p>Updated: {lastUpdated.toLocaleDateString()}</p>
 					<Button
 						variant='outline-primary'
