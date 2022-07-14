@@ -32,7 +32,6 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 
 	useEffect(() => {
 		if (modal) {
-
 			setShow(true);
 		}
 	}, [modal]);
@@ -47,8 +46,8 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 		const url = `${config.API_URL}/user/${username}/jobs`;
 		axios
 			.post(url, newJob)
-			.then((user) => {
-                setUserDetails(user)
+			.then((res) => {
+				setUserDetails(res.data);
 				handleClose();
 			})
 			.catch((error) => {
