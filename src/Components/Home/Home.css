@@ -12,8 +12,8 @@ button {
 }
 
 .go-home-button {
-	border-bottom-right-radius: 25px;
-	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 19px;
+	border-bottom-left-radius: 19px;
 }
 
 button:focus {
@@ -54,17 +54,29 @@ label {
 	transition: opacity 0.3s ease-in, transform 0.3s ease-in;
 }
 
-input:focus + label,
+/* input:focus + label,
 input:not(:placeholder-shown) + label {
 	opacity: 1;
 	transform: translateY(-4.25rem);
-}
+} */
 
 input[type='text'] {
 	width: 100%;
 }
 
 .login-box {
+	border: 1px solid #949494;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+	width: 90%;
+	margin: auto;
+	max-width: 400px;
+	text-align: center;
+	background-color: #ffffff;
+	margin-top: 24px;
+	border-radius: 24px;
+}
+
+.signup-box {
 	border: 1px solid #949494;
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
 	width: 90%;
@@ -97,6 +109,11 @@ input[type='text'] {
 	margin-top: 45px;
 }
 
+.home-page {
+	height: 90vh;
+	overflow: scroll;
+}
+
 @media only screen and (max-width: 430px) {
 	form {
 		width: 75%;
@@ -117,7 +134,7 @@ input[type='text'] {
 
 @media only screen and (min-width: 750px) {
 	.background {
-		position: absolute;
-		bottom: 0%;
+		/* position: absolute;
+		bottom: 0%; */
 	}
 }
