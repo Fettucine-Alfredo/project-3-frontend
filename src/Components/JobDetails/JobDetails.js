@@ -21,9 +21,8 @@ function JobDetails(props) {
 			.get(url)
 			.then(function (response) {
 				// handle success
-				console.log(response);
 				setJob(response.data);
-				document.title = `${job.title} at ${job.company.name}`;
+				document.title = `${response.data.company.name} - ${response.data.title}`;
 			})
 			.catch(function (error) {
 				// handle error
@@ -46,13 +45,15 @@ function JobDetails(props) {
 		return (
 			<div className='jobDetails'>
 				<h1>
-					{job.company.name}- '{job.title}'
+					{job.company.name} - '{job.title}'
 				</h1>
 				<h3>{job.url}</h3>
 				<p>{job.description}</p>
 				<ul>Skills:{skillsList}</ul>
 				<ul>Job Contacts: {contactsList}</ul>
-				<button className='go-home-button' onClick={() => navigate(-1)}>Go Back Home</button>
+				<button className='go-home-button' onClick={() => navigate(-1)}>
+					Go Back Home
+				</button>
 			</div>
 		);
 	}
