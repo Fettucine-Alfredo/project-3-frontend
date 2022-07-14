@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import Jobs from '../Jobs/Jobs';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import './User.css';
 import AddEdit from '../JobsListItem/AddEdit';
 import { useState, useEffect } from 'react';
@@ -44,20 +45,42 @@ function User(props) {
 	}
 	const { username } = useParams();
 
+	/* 		if (error || (!userDetails && !loading)) {
+			return (
+				<>
+					<Alert variant='danger'>
+						{error || 'Something went wrong. Please try again later'}
+					</Alert>
+				</>
+			);
+		}
+
+		if (loading && !userDetails) {
+			return (
+				<Spinner animation='border' role='status'>
+					<span className='visually-hidden'>Loading...</span>
+				</Spinner>
+			);
+		}
+
+		if (!loading && !userDetails.jobs.length) {
+			return <Alert variant='primary'>You have't added any jobs yet...</Alert>;
+		} */
+
 	return (
 		<>
 			<Container className='user-container'>
-				<Row>
+				<div className='welcome'>
 					<h1>Welcome, {username}</h1>
-				</Row>
-				<button onClick={showModal}>add</button>
+					<Button
+						className='btn-sm add-btn'
+						variant='primary'
+						onClick={showModal}>
+						<i className='fa-solid fa-circle-plus fa-xl'></i> add job
+					</Button>
+				</div>
 				<Row>
-					<Jobs
-						userDetails={userDetails}
-						setUserDetails={setUserDetails}
-						loading={loading}
-						error={error}
-					/>
+					<Jobs userDetails={userDetails} setUserDetails={setUserDetails} />
 				</Row>
 			</Container>
 			<AddEdit
