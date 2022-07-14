@@ -47,10 +47,18 @@ function JobDetails(props) {
 				<h1>
 					{job.company.name} - '{job.title}'
 				</h1>
-				<h3>{job.url}</h3>
+				<h3>
+					<a href={job.url}>{job.url}</a>
+				</h3>
+				<p>
+					<span className='currentStepSpan'>Current Step: </span>
+					{job.currentStep}
+				</p>
 				<p>{job.description}</p>
+
 				<ul>Skills:{skillsList}</ul>
 				<ul>Job Contacts: {contactsList}</ul>
+
 				<button className='go-home-button' onClick={() => navigate(-1)}>
 					Go Back Home
 				</button>
