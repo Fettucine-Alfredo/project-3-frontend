@@ -40,7 +40,9 @@ function Header() {
 							<LinkContainer onClick={() => toggleDropdown()} to='/signup'>
 								<NavDropdown.Item>Create Account</NavDropdown.Item>
 							</LinkContainer>
-							<NavDropdown.Item href='#action/3.2'>Login</NavDropdown.Item>
+							<LinkContainer onClick={() => toggleDropdown()} to='/'>
+								<NavDropdown.Item>Login</NavDropdown.Item>
+							</LinkContainer>
 							<NavDropdown.Item href='#action/3.3'>Logout</NavDropdown.Item>
 						</NavDropdown>
 					</Nav>
