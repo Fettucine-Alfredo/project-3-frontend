@@ -3,7 +3,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Row from 'react-bootstrap/Row';
 import Alert from 'react-bootstrap/Alert';
 
-function Jobs({ userDetails, setUserDetails }) {
+function Jobs({ userDetails, setUserDetails, setJobToEdit, setModal }) {
 	if (!userDetails) {
 		return;
 	}
@@ -17,6 +17,8 @@ function Jobs({ userDetails, setUserDetails }) {
 						job={job}
 						username={userDetails.username}
 						setUserDetails={setUserDetails}
+						setJobToEdit={setJobToEdit}
+						setModal={setModal}
 					/>
 				))}
 			</Row>
