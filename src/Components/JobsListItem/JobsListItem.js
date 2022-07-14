@@ -8,7 +8,13 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import './JobsListItem.css';
 
-function JobsListItem({ job, username, setUserDetails }) {
+function JobsListItem({
+	job,
+	username,
+	setUserDetails,
+	setJobToEdit,
+	setModal,
+}) {
 	const [error, setError] = useState(false);
 
 	const lastUpdated = new Date(job.updatedAt);
@@ -48,7 +54,8 @@ function JobsListItem({ job, username, setUserDetails }) {
 	}
 
 	function handleEdit(id) {
-		console.log('You clicked the edit button');
+		setJobToEdit(job);
+		setModal(true);
 	}
 
 	return (

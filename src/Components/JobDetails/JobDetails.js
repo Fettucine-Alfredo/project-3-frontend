@@ -34,13 +34,6 @@ function JobDetails(props) {
 		const skillsList = job.skills.map((skill, index) => {
 			return <li key={`skill-${index}`}>{skill}</li>;
 		});
-		const contactsList = job.contacts.map((contact, index) => {
-			return (
-				<li key={`contact-${index}`}>
-					{contact.name}, {contact.email}
-				</li>
-			);
-		});
 
 		return (
 			<div className='jobDetails'>
@@ -57,8 +50,12 @@ function JobDetails(props) {
 				<p>{job.description}</p>
 
 				<ul>Skills:{skillsList}</ul>
-				<ul>Job Contacts: {contactsList}</ul>
-				<button className='go-home-button button' onClick={() => navigate(-1)}>
+				<ul>
+					Job Contacts: {job.contacts.name}{' '}
+					{job.contacts.email && `<${job.contacts.email}>`}{' '}
+					{job.contacts.phone && `- ${job.contacts.phone}`}
+				</ul>
+				<button className='go-home-button' onClick={() => navigate(-1)}>
 					Go Back Home
 				</button>
 			</div>
