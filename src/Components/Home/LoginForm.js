@@ -23,17 +23,21 @@ function LoginForm(props) {
 	return (
 		<div className='login-box'>
 			<h3 className='form-header'>Sign In</h3>
-			<form onSubmit={handleSubmit}>
+			<form className='form' onSubmit={handleSubmit}>
 				<input
 					id='username'
+					className='input'
 					placeholder='Username'
 					type='text'
 					onChange={handleUserChange}
 					required
 				/>
-				<button className='login-form-buttons' type='submit'>Login</button>
-				<button className='login-form-buttons' onClick={signUp}>Sign up</button>
-
+				<button className='button login-form-buttons' type='submit'>
+					Login
+				</button>
+				<button className='button login-form-buttons' onClick={signUp}>
+					Sign up
+				</button>
 			</form>
 		</div>
 	);

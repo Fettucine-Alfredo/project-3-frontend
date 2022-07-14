@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-function AddEdit({ modal, setModal, setUserDetails }) {
+function AddEdit({ modal, setModal, setUserDetails, jobToEdit, setJobToEdit }) {
 	const [show, setShow] = useState(false);
 	const initialJob = {
 		title: '',
@@ -17,18 +17,27 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 		},
 		currentStep: '',
 		skills: [],
-		contacts: [],
+		contacts: { name: '', email: '', phone: '' },
 	};
 	const [job, setJob] = useState(initialJob);
 	const [skills, setSkills] = useState('');
-	const [contacts, setContacts] = useState({ name: '', email: '', phone: '' });
 	const { username, id } = useParams();
 
 	const handleClose = () => {
 		setShow(false);
 		setModal(false);
+		setJob(initialJob);
+		setSkills('');
 	};
 	const handleShow = () => setShow(true);
+
+	useEffect(() => {
+		if (jobToEdit) {
+			const skills = jobToEdit.skills.join(', ');
+			setSkills(skills);
+			setJob(jobToEdit);
+		}
+	}, [jobToEdit]);
 
 	useEffect(() => {
 		if (modal) {
@@ -40,36 +49,28 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 		event.preventDefault();
 		const newJob = { ...job };
 		const newSkills = skills.split(',').map((value) => value.trim());
-		newJob.contacts.push(contacts);
 		newJob.skills = newSkills;
-		console.log(newJob);
-		const url = `${config.API_URL}/user/${username}/jobs`;
-		axios
-			.post(url, newJob)
-			.then((res) => {
+		if (jobToEdit) {
+			const url = `${config.API_URL}/user/${username}/jobs/${jobToEdit._id}`;
+			axios.patch(url, newJob).then((res) => {
 				setUserDetails(res.data);
+				setJob(initialJob);
+				setJobToEdit(null);
+				setSkills('');
 				handleClose();
-			})
-			.catch((error) => {
-				console.log(error);
 			});
-		// try {
-		// 	const response = await axios.post(
-		// 		`${config.API_URL}/user/${username}/jobs`,
-		// 		job
-		// 	);
-
-		// } catch (error) {
-		// 	console.log(error);
-		// }
-	};
-	const handleContacts = (event) => {
-		if (event.target.id === 'contacts-name') {
-			setContacts({ ...contacts, name: event.target.value });
-		} else if (event.target.id === 'contacts-email') {
-			setContacts({ ...contacts, email: event.target.value });
-		} else if (event.target.id === 'contacts-phone') {
-			setContacts({ ...contacts, phone: event.target.value });
+		} else {
+			const url = `${config.API_URL}/user/${username}/jobs`;
+			axios
+				.post(url, newJob)
+				.then((res) => {
+					setUserDetails(res.data);
+					setJob(initialJob);
+					handleClose();
+				})
+				.catch((error) => {
+					console.log(error);
+				});
 		}
 	};
 
@@ -81,6 +82,12 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 		setJob({ ...job, [event.target.id]: event.target.value });
 	};
 
+	const handleContact = (event) => {
+		setJob({
+			...job,
+			contacts: { ...job.contacts, [event.target.id]: event.target.value },
+		});
+	};
 	const handleCompany = (event) => {
 		setJob({ ...job, [event.target.id]: { name: event.target.value } });
 	};
@@ -89,31 +96,42 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 		<>
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
-					<Modal.Title>Add Job</Modal.Title>
+					<Modal.Title>Add/Edit Job</Modal.Title>
 				</Modal.Header>
-				<Modal.Body>
-					<Form>
-						<Form.Group className='title'>
-							<Form.Label>Job Title</Form.Label>
+				<Form onSubmit={handleSubmit}>
+					<Modal.Body>
+						<Form.Group className='mb-3'>
+							<Form.Label htmlFor='company'>Company Name:</Form.Label>
+							<Form.Control
+								id='company'
+								type='text'
+								onChange={handleCompany}
+								value={job.company.name}
+								required
+							/>
+						</Form.Group>
+						<Form.Group className='mb-3'>
+							<Form.Label htmlFor='title'>Job Title:</Form.Label>
 							<Form.Control
 								id='title'
 								type='text'
-								placeholder='Job Title'
 								onChange={handleChange}
 								value={job.title}
+								required
 							/>
 						</Form.Group>
-						<Form.Group className='url'>
-							<Form.Label>url</Form.Label>
+						<Form.Group className='mb-3'>
+							<Form.Label htmlFor='url'>Job Listing URL:</Form.Label>
 							<Form.Control
 								id='url'
 								type='text'
 								onChange={handleChange}
 								value={job.url}
+								placeholder='https://'
 							/>
 						</Form.Group>
-						<Form.Group className='description'>
-							<Form.Label htmlFor='description'>Description</Form.Label>
+						<Form.Group className='mb-3'>
+							<Form.Label htmlFor='description'>Job Description:</Form.Label>
 							<Form.Control
 								id='description'
 								as='textarea'
@@ -122,17 +140,8 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 								value={job.description}
 							/>
 						</Form.Group>
-						<Form.Group className='company-name'>
-							<Form.Label htmlFor='company'>Company Name</Form.Label>
-							<Form.Control
-								id='company'
-								type='text'
-								onChange={handleCompany}
-								value={job.company.name}
-							/>
-						</Form.Group>
-						<Form.Group className='current-step'>
-							<Form.Label htmlFor='currentStep'>Current Step</Form.Label>
+						<Form.Group className='mb-3'>
+							<Form.Label htmlFor='currentStep'>Current Step:</Form.Label>
 							<Form.Control
 								id='currentStep'
 								type='text'
@@ -140,54 +149,59 @@ function AddEdit({ modal, setModal, setUserDetails }) {
 								value={job.currentStep}
 							/>
 						</Form.Group>
-						<Form.Group className='skills'>
-							<Form.Label htmlFor='skills'>Skills</Form.Label>
+						<Form.Group className='mb-5'>
+							<Form.Label htmlFor='skills'>Skills:</Form.Label>
 							<Form.Control
-								placeholder='HTML, CSS, JavaScript'
+								placeholder='html, css, javascript'
 								id='skills'
 								type='text'
 								onChange={handleSkills}
 								value={skills}
 							/>
 						</Form.Group>
-						<Form.Group className='contacts'>
-							<Form.Label htmlFor='contacts-name'>Contacts Name</Form.Label>
-							<Form.Control
-								id='contacts-name'
-								type='text'
-								onChange={handleContacts}
-								value={contacts.name}
-							/>
-							<Form.Label htmlFor='contacts-email'>Email</Form.Label>
-							<Form.Control
-								id='contacts-email'
-								type='text'
-								onChange={handleContacts}
-								value={contacts.email}
-							/>
-							<Form.Label htmlFor='contacts-phone'>Phone</Form.Label>
-							<Form.Control
-								id='contacts-phone'
-								type='text'
-								onChange={handleContacts}
-								value={contacts.phone}
-							/>
-						</Form.Group>
-					</Form>
-				</Modal.Body>
-				<Modal.Footer>
-					<Button variant='secondary' onClick={handleClose}>
-						Close
-					</Button>
-					<Button type='submit' variant='primary' onClick={handleSubmit}>
-						Save Changes
-					</Button>
-				</Modal.Footer>
+						<fieldset>
+							<legend>Contact at Company</legend>
+							<Form.Group className='mb-3'>
+								<Form.Label htmlFor='name'>Name:</Form.Label>
+								<Form.Control
+									id='name'
+									type='text'
+									onChange={handleContact}
+									value={job.contacts.name}
+								/>
+							</Form.Group>
+							<Form.Group className='mb-3'>
+								<Form.Label htmlFor='email'>Email:</Form.Label>
+								<Form.Control
+									id='email'
+									type='email'
+									onChange={handleContact}
+									value={job.contacts.email}
+								/>
+							</Form.Group>
+							<Form.Group className='mb-3'>
+								<Form.Label htmlFor='phone'>Phone:</Form.Label>
+								<Form.Control
+									id='phone'
+									type='tel'
+									onChange={handleContact}
+									value={job.contacts.phone}
+								/>
+							</Form.Group>
+						</fieldset>
+					</Modal.Body>
+					<Modal.Footer>
+						<Button type='button' variant='secondary' onClick={handleClose}>
+							Close
+						</Button>
+						<Button type='submit' variant='primary'>
+							Save Changes
+						</Button>
+					</Modal.Footer>
+				</Form>
 			</Modal>
 		</>
 	);
 }
-
-// render(<AddEdit />);
 
 export default AddEdit;

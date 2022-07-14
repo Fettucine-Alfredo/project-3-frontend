@@ -13,6 +13,7 @@ function User(props) {
 	const [userDetails, setUserDetails] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
+	const [jobToEdit, setJobToEdit] = useState(null);
 
 	function getUser() {
 		// Get API URL from config
@@ -80,13 +81,20 @@ function User(props) {
 					</Button>
 				</div>
 				<Row>
-					<Jobs userDetails={userDetails} setUserDetails={setUserDetails} />
+					<Jobs
+						userDetails={userDetails}
+						setUserDetails={setUserDetails}
+						setJobToEdit={setJobToEdit}
+						setModal={setModal}
+					/>
 				</Row>
 			</Container>
 			<AddEdit
 				modal={modal}
 				setModal={setModal}
 				setUserDetails={setUserDetails}
+				jobToEdit={jobToEdit}
+				setJobToEdit={setJobToEdit}
 			/>
 		</>
 	);
