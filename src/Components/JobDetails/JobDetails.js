@@ -58,8 +58,7 @@ function JobDetails(props) {
 
 				<ul>Skills:{skillsList}</ul>
 				<ul>Job Contacts: {contactsList}</ul>
-
-				<button className='go-home-button' onClick={() => navigate(-1)}>
+				<button className='go-home-button button' onClick={() => navigate(-1)}>
 					Go Back Home
 				</button>
 			</div>

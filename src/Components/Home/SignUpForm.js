@@ -29,13 +29,13 @@ function SignUpForm(props) {
 	return (
 		<div className='signup-box'>
 			<h3 className='form-header'>Sign up</h3>
-			<form onSubmit={handleSubmit}>
+			<form className='form' onSubmit={handleSubmit}>
 				{/* <label htmlFor='name'>Name:</label> */}
-
 				<input
 					type='text'
 					name='name'
 					id='name'
+					className='input'
 					value={formState.name}
 					placeholder='Name'
 					onChange={handleChange}
@@ -46,6 +46,7 @@ function SignUpForm(props) {
 					type='text'
 					name='username'
 					id='username'
+					className='input'
 					value={formState.username}
 					placeholder='Username'
 					onChange={handleChange}
@@ -56,13 +57,15 @@ function SignUpForm(props) {
 					type='text'
 					name='email'
 					id='email'
+					className='input'
 					value={formState.email}
 					placeholder='Email'
-
 					onChange={handleChange}
 					required
 				/>
-				<button type='submit'>Sign up</button>
+				<button className='button' type='submit'>
+					Sign up
+				</button>
 			</form>
 		</div>
 	);
