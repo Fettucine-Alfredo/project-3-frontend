@@ -3,6 +3,7 @@ import Jobs from '../Jobs/Jobs';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import './User.css';
+import AddEdit from '../JobsListItem/AddEdit'
 
 function User(props) {
 	const { username } = useParams();
@@ -12,6 +13,7 @@ function User(props) {
 			<Row>
 				<h1>Welcome, {username}</h1>
 			</Row>
+			<button onClick={props.showModal}>add</button>
 			<Row>
 				<Jobs username={username} />
 			</Row>
