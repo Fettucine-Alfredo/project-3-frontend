@@ -33,6 +33,7 @@ function LoginForm(props) {
 				/>
 				<button className='login-form-buttons' type='submit'>Login</button>
 				<button className='login-form-buttons' onClick={signUp}>Sign up</button>
+
 			</form>
 		</div>
 	);
