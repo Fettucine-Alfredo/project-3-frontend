@@ -37,17 +37,22 @@ function AddEdit({ modal, setModal }) {
 		}
 	}, [modal]);
 
-	const handleSubmit = async (event) => {
+	const handleSubmit = (event) => {
 		event.preventDefault();
 		const newJob = { ...job };
 		const newSkills = skills.split(',').map((value) => value.trim());
 		newJob.contacts.push(contacts);
 		newJob.skills = newSkills;
 		console.log(newJob);
-		// var result = sentences.split(",").map(function (value) {
-		// return value.trim();
-		// });
-
+		const url = `${config.API_URL}/user/${username}/jobs`;
+		axios
+			.post(url, newJob)
+			.then(() => {
+				handleClose();
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 		// try {
 		// 	const response = await axios.post(
 		// 		`${config.API_URL}/user/${username}/jobs`,
@@ -87,7 +92,7 @@ function AddEdit({ modal, setModal }) {
 					<Modal.Title>Add Job</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<Form onSubmit={handleSubmit}>
+					<Form>
 						<Form.Group className='title'>
 							<Form.Label>Job Title</Form.Label>
 							<Form.Control
@@ -174,7 +179,7 @@ function AddEdit({ modal, setModal }) {
 					<Button variant='secondary' onClick={handleClose}>
 						Close
 					</Button>
-					<Button type='submit' variant='primary' onClick={handleClose}>
+					<Button type='submit' variant='primary' onClick={handleSubmit}>
 						Save Changes
 					</Button>
 				</Modal.Footer>

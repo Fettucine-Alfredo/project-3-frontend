@@ -1,40 +1,9 @@
-import { useState, useEffect } from 'react';
-import { config } from '../../Constants';
-import axios from 'axios';
+
 import JobsListItem from '../JobsListItem/JobsListItem';
 import Spinner from 'react-bootstrap/Spinner';
 import Row from 'react-bootstrap/Row';
 
-function Jobs({ username }) {
-	const [userDetails, setUserDetails] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(false);
-
-	function getUser() {
-		// Get API URL from config
-		const url = `${config.API_URL}/user/${username}`;
-		axios
-			.get(url)
-			.then((res) => {
-				setUserDetails(res.data);
-			})
-			.catch((error) => {
-				setLoading(false);
-				setError(error);
-			});
-	}
-
-	useEffect(() => {
-		const handleLoadingTimeout = setTimeout(() => {
-			if (!userDetails) {
-				setLoading(false);
-			}
-		});
-		getUser();
-
-		return () => clearTimeout(handleLoadingTimeout);
-	}, []);
-
+function Jobs({ userDetails, setUserDetails, loading, error }) {
 	if (error || (!userDetails && !loading)) {
 		return (
 			<>
