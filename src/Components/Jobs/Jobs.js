@@ -36,7 +36,7 @@ function Jobs({ userDetails, setUserDetails, loading, error }) {
 					<JobsListItem
 						key={job._id}
 						job={job}
-						username={username}
+						username={userDetails.username}
 						setUserDetails={setUserDetails}
 					/>
 				))}

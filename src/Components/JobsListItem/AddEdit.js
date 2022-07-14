@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-function AddEdit({ modal, setModal }) {
+function AddEdit({ modal, setModal, setUserDetails }) {
 	const [show, setShow] = useState(false);
 	const initialJob = {
 		title: '',
@@ -32,7 +32,7 @@ function AddEdit({ modal, setModal }) {
 
 	useEffect(() => {
 		if (modal) {
-			console.log(modal);
+
 			setShow(true);
 		}
 	}, [modal]);
@@ -47,7 +47,8 @@ function AddEdit({ modal, setModal }) {
 		const url = `${config.API_URL}/user/${username}/jobs`;
 		axios
 			.post(url, newJob)
-			.then(() => {
+			.then((user) => {
+                setUserDetails(user)
 				handleClose();
 			})
 			.catch((error) => {
