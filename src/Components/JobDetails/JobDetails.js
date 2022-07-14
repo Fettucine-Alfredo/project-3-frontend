@@ -55,7 +55,7 @@ function JobDetails(props) {
 					{job.contacts.email && `<${job.contacts.email}>`}{' '}
 					{job.contacts.phone && `- ${job.contacts.phone}`}
 				</ul>
-				<button className='go-home-button' onClick={() => navigate(-1)}>
+				<button className='go-home-button button' onClick={() => navigate(-1)}>
 					Go Back Home
 				</button>
 			</div>
