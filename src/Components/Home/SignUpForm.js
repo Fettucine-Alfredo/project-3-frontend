@@ -11,11 +11,10 @@ function SignUpForm(props) {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		navigate(`/user/${formState.username}`, { replace: true });
 		axios
 			.post(url, formState)
 			.then(function (response) {
-				console.log(response.data);
+				navigate(`/user/${formState.username}`, { replace: true });
 			})
 			.catch(function (error) {
 				console.log(error);

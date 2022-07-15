@@ -1,7 +1,5 @@
 import JobsListItem from '../JobsListItem/JobsListItem';
-import Spinner from 'react-bootstrap/Spinner';
 import Row from 'react-bootstrap/Row';
-import Alert from 'react-bootstrap/Alert';
 
 function Jobs({ userDetails, setUserDetails, setJobToEdit, setModal }) {
 	if (!userDetails) {

@@ -1,4 +1,6 @@
 // Constants.js
+//https://a-carreras-c.medium.com/development-and-production-variables-for-react-apps-c04af8b430a5
+
 const prod = {
 	API_URL: 'https://sei-trakr.herokuapp.com/api',
 };
