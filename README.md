@@ -13,13 +13,12 @@ This is the frontend to [Trakr](https://jobtrakr.netlify.app/), a tool designed 
 After an authentication process the user will be able to add a job (using a detailed form that outlines not just the basic elements of the job but what skills are required) plus their current step in the process (whether they're researching, applying, applied, or scheduled for an interview).
 
 ## Technologies
-
--HTML5
--CSS
--Node.js
--React.js
--Bootstrap.js
--Netlify
+    -HTML5
+    -CSS
+    -Node
+    -React
+    -Bootstrap
+    -Netlify
 
 The app is built on React and Boostrap with responsive design as a guiding principle, and deployed on Netlify, intended to work in tandem with the backend which utilizes Express and connects to MongoDB where the information for the user's jobs are stored in json format (which is itself deployed using Heroku).
 
