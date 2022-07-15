@@ -2,13 +2,13 @@
 
 # Trakr
 
-SEIR059 Project 3 Team Fettucine Alfredo: Alfredo, Devin, Soma, and Shiv
+SEIR-59 Project 3 Team Fettucine Alfredo: Alfredo, Devin, Soma, and Shiv
 
 Project 3
 
 ## Description 
 
-This is the frontend to [Trakr], a tool designed to help users keep track of their own job application processes by creating a personal database of job listings they're currently working on.
+This is the frontend to [Trakr](https://jobtrakr.netlify.app/), a tool designed to help users keep track of their own job application processes by creating a personal database of job listings they're currently working on.
 
 After an authentication process the user will be able to add a job (using a detailed form that outlines not just the basic elements of the job but what skills are required) plus their current step in the process (whether they're researching, applying, applied, or scheduled for an interview).
 
@@ -19,8 +19,9 @@ After an authentication process the user will be able to add a job (using a deta
 -Node.js
 -React.js
 -Bootstrap.js
+-Netlify
 
-The app is built on React and Boostrap with responsive design as a guiding principle, and making use of an Express backend that connects to MongoDB where the information for the user's jobs are stored in json format, and is deployed using Heroku.
+The app is built on React and Boostrap with responsive design as a guiding principle, and deployed on Netlify, intended to work in tandem with the backend which utilizes Express and connects to MongoDB where the information for the user's jobs are stored in json format (which is itself deployed using Heroku).
 
 The frontend consists of six components overall: a Home component from which the user will login or sign up from, a Header which serves as the navigation bar for the wesbite and is persistent, and About page that explains in brief the functionality of the website, a User page that is displayed once the user is authenthicated accompanied by the Jobs component which is a list of all of the entries the user has entered into the database so far (along with options to add a new entry, or edit and delete currently existing ones). Finally, a succinct JobDetails component that displays the full extent of the informaton the user entered including the Company name, position Title, relevant skills, current step, and contact information.
 
