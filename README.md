@@ -6,6 +6,12 @@ SEIR-59 Project 3 Team Fettucine Alfredo: Alfredo, Devin, Soma, and Shiv
 
 Project 3
 
+![image](https://user-images.githubusercontent.com/104736102/179268766-3220feaa-cd79-44c0-9566-241967532029.png)
+![image](https://user-images.githubusercontent.com/104736102/179268879-4f1a9183-fead-4039-a67b-b2b1fcfc4cbf.png)
+![image](https://user-images.githubusercontent.com/104736102/179268479-442b79ad-8806-4c74-9ab1-cfa1a14b3259.png)
+![image](https://user-images.githubusercontent.com/104736102/179268621-46c60417-3ecc-45e3-bf7b-05df9a430400.png)
+![image](https://user-images.githubusercontent.com/104736102/179268968-0e478502-8ca6-4af5-bb60-bfbecf464be0.png)
+
 ## Description 
 
 This is the frontend to [Trakr](https://jobtrakr.netlify.app/), a tool designed to help users keep track of their own job application processes by creating a personal database of job listings they're currently working on.
