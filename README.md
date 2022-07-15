@@ -2,8 +2,7 @@
 
 # Trakr
 
-Team Fettucine Alfredo (delicious)
-Alfredo, Devin, Soma, and Shiv
+SEIR059 Project 3 Team Fettucine Alfredo: Alfredo, Devin, Soma, and Shiv
 
 Project 3
 
