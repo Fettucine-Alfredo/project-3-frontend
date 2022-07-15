@@ -43,7 +43,9 @@ function Header() {
 							<LinkContainer onClick={() => toggleDropdown()} to='/'>
 								<NavDropdown.Item>Login</NavDropdown.Item>
 							</LinkContainer>
-							<NavDropdown.Item href='#action/3.3'>Logout</NavDropdown.Item>
+							<LinkContainer to='/' onClick={() => toggleDropdown()}>
+								<NavDropdown.Item>Logout</NavDropdown.Item>
+							</LinkContainer>
 						</NavDropdown>
 					</Nav>
 				</Navbar.Collapse>
