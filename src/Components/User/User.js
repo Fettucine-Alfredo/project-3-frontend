@@ -46,28 +46,6 @@ function User(props) {
 	}
 	const { username } = useParams();
 
-	/* 		if (error || (!userDetails && !loading)) {
-			return (
-				<>
-					<Alert variant='danger'>
-						{error || 'Something went wrong. Please try again later'}
-					</Alert>
-				</>
-			);
-		}
-
-		if (loading && !userDetails) {
-			return (
-				<Spinner animation='border' role='status'>
-					<span className='visually-hidden'>Loading...</span>
-				</Spinner>
-			);
-		}
-
-		if (!loading && !userDetails.jobs.length) {
-			return <Alert variant='primary'>You have't added any jobs yet...</Alert>;
-		} */
-
 	return (
 		<>
 			<Container className='user-container'>

@@ -29,7 +29,6 @@ function SignUpForm(props) {
 		<div className='signup-box'>
 			<h3 className='form-header'>Sign up</h3>
 			<form className='form' onSubmit={handleSubmit}>
-				{/* <label htmlFor='name'>Name:</label> */}
 				<input
 					type='text'
 					name='name'
@@ -40,7 +39,7 @@ function SignUpForm(props) {
 					onChange={handleChange}
 					required
 				/>
-				{/* <label htmlFor='username'>Username:</label> */}
+
 				<input
 					type='text'
 					name='username'
@@ -51,7 +50,7 @@ function SignUpForm(props) {
 					onChange={handleChange}
 					required
 				/>
-				{/* <label htmlFor='email'>Email:</label> */}
+
 				<input
 					type='text'
 					name='email'

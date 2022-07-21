@@ -8,8 +8,6 @@ import { NavDropdown } from 'react-bootstrap';
 import { useState } from 'react';
 
 function Header() {
-	// const [dropDown, setDropDown] = useState(false);
-
 	function toggleDropdown() {
 		if (this.state.showDropdown) {
 			this.setState({ showDropdown: false });
@@ -33,10 +31,7 @@ function Header() {
 						<LinkContainer onClick={() => toggleDropdown()} to='/about'>
 							<Nav.Link>About</Nav.Link>
 						</LinkContainer>
-						<NavDropdown
-							// onClick={() => toggleDropdown()}
-							title='Account'
-							id='basic-nav-dropdown'>
+						<NavDropdown title='Account' id='basic-nav-dropdown'>
 							<LinkContainer onClick={() => toggleDropdown()} to='/signup'>
 								<NavDropdown.Item>Create Account</NavDropdown.Item>
 							</LinkContainer>
